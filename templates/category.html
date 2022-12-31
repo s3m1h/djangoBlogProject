@@ -1,0 +1,47 @@
+{% extends './base/base.html'%}
+{% load static %}
+
+
+
+{%block content%}
+
+
+	{% for post in category.posts.all%}
+	<article class="content-item">
+		<div class="entry-media">
+			<div class="post-ribbon">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+					 y="0px" viewBox="0 0 34 50" enable-background="new 0 0 34 50" xml:space="preserve">
+					<g>
+						<polygon fill-rule="evenodd" clip-rule="evenodd"
+								 points="17,40.7 0.5,49.2 0.5,0.5 33.5,0.5 33.5,49.2"/>
+						<path d="M33,1v47.4l-15.5-8L17,40.2l-0.5,0.2L1,48.4V1H33 M34,0H0v50l17-8.7L34,50V0L34,0z"/>
+					</g>
+				</svg>
+				<i class="fa fa-star"></i>
+			</div>
+			<div class="post-title">
+				<h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
+				<div class="entry-date">
+					<ul>
+						<li><a href='#'>{{post.category.title}}</a></li>
+						<li>{{post.created_at|timesince}}</li>
+						<li>23 comment</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</article>
+	{%endfor%}
+
+	<div class="post-navigation">
+		<ul>
+			<li><span>1</span></li>
+			<li><a href="javascript:;">2</a></li>
+			<li><a href="javascript:;">3</a></li>
+			<li><a href="javascript:;"> <i class="fa fa-chevron-right"></i> </a></li>
+		</ul>
+	</div>
+
+
+{%endblock%}
