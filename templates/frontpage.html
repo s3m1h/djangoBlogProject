@@ -34,8 +34,7 @@
 	
 	{% for contact in posts %}
 		{# Each "contact" is a Contact model object. #}
-		{{ contact.full_name|upper }}<br>
-		...
+		{{ contact.full_name|upper }}
 	{% endfor %}
 
 	<div class="post-navigation">

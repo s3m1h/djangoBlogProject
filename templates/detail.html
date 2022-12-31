@@ -24,11 +24,10 @@
                 <ul>
                     <li><a href='{% url "category_detail" post.category.slug %}'>{{post.category}}</a></li>
                     <li>{{post.created_at|timesince}}</li>
-                    <li>23 comment</li>
                 </ul>
             </div>
         </div>
-        <div class="bubble-line"></div>
+
         <div class="post-content">
             <div class="container gallery">
                 <div class="row">
@@ -47,8 +46,8 @@
                 {{post.text}}
             </p>
         </div>
-        <div class="bubble-line"></div>
-        
+
+        <div class="post-footer"></div>
     </div>
 </article>
 
