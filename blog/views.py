@@ -20,7 +20,7 @@ def category(request, slug):
 
 
 def about(request):
-    about = get_object_or_404(About).exclude(status=Post.ACTIVE)
+    about = get_object_or_404(About)
     return render(request,'about.html'
     {
         'about':about
