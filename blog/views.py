@@ -17,10 +17,3 @@ def category(request, slug):
         'category':category,
         'posts':posts
     })
-
-
-def about(request):
-    about = get_object_or_404(About)
-    return render(request,'about.html',{
-        'about':about
-    })

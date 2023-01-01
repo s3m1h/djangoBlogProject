@@ -2,20 +2,6 @@ from django.db import models
 from ckeditor.fields import RichTextField
 # Create your models here.
 
-class About(models.Model):
-    ACTIVE = 'aktif'
-    DRAFT = 'taslak'
-
-    CHOICES_STATUS = (
-        (ACTIVE, 'Aktif'),
-        (DRAFT, 'Taslak')
-    )
-    title = models.CharField(max_length=255)
-    text = RichTextField()
-    status = models.CharField(max_length=10, choices=CHOICES_STATUS, default=ACTIVE)
-    def __str__(self):
-        return self.title
-
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
