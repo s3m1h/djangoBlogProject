@@ -20,7 +20,7 @@ def category(request, slug):
 
 
 def about(request):
-    about = get_object_or_404(About)
+    about = get_object_or_404(About, id=1)
     return render(request,'about.html',{
         'about':about
     })
