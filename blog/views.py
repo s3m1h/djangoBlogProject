@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
-from .models import Post,Category
+from .models import Post,Category,About
 
 # Create your views here.
 def detail(request,category_slug, slug):
@@ -17,3 +17,12 @@ def category(request, slug):
         'category':category,
         'posts':posts
     })
+
+
+def about(request):
+    about = get_object_or_404(About).exclude(status=Post.ACTIVE)
+    return render(request,'about.html'
+    {
+        'about':about
+    }
+    )
