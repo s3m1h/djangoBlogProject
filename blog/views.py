@@ -12,6 +12,8 @@ def detail(request,category_slug, slug):
 
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
+    posts = category.posts.filter(status = Post.ACTIVE)
     return render(request, 'category.html', {
-        'category':category
+        'category':category,
+        'posts':posts
     })
