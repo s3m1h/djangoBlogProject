@@ -17,7 +17,7 @@ class Post(models.Model):
     DRAFT = 'taslak'
 
     CHOICES_STATUS = (
-        (ACTIVE, 'Aktif')
+        (ACTIVE, 'Aktif'),
         (DRAFT, 'Taslak')
     )
 
