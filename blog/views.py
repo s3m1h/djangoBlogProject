@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
-from .models import Post,Category,About
+from .models import Post,Category
 
 # Create your views here.
 def detail(request,category_slug, slug):
