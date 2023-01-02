@@ -23,14 +23,35 @@
 	</article>
 	{%endfor%}
 
+	{% for contact in posts %}
+		{# Each "contact" is a Contact model object. #}
+		{{ contact.full_name|upper }}
+	{% endfor %}
+
 	<div class="post-navigation">
-		<ul>
-			<li><span>1</span></li>
-			<li><a href="javascript:;">2</a></li>
-			<li><a href="javascript:;">3</a></li>
-			<li><a href="javascript:;"> <i class="fa fa-chevron-right"></i> </a></li>
-		</ul>
+			<ul>
+				{% if posts.has_previous %}
+					<li> <a href="?page=1">&laquo;</a></li>
+					<li><a href="?page={{ posts.previous_page_number }}"><i class="fa fa-chevron-left"></i></a></li>
+				{% endif %}
+
+			<li>
+				<span class="current">
+					 {{ posts.number }} of {{ posts.paginator.num_pages }}.
+				</span>
+			</li>
+
+			{% if posts.has_next %}
+				<li>
+					<a href="?page={{ posts.next_page_number }}"><i class="fa fa-chevron-right"></i></a>
+				</li>
+				
+				<li><a href="?page={{ posts.paginator.num_pages }}"> &raquo;</a></li>
+			{% endif %}
+			</ul>
 	</div>
+</div>
+	
 
 
 {%endblock%}

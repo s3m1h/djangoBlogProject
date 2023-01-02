@@ -12,7 +12,14 @@ def detail(request,category_slug, slug):
 
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    posts = category.posts.filter(status = Post.ACTIVE)
+    post_list = category.posts.filter(status = Post.ACTIVE)
+
+    paginator = Paginator(post_list, 5)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
+
+
     return render(request, 'category.html', {
         'category':category,
         'posts':posts
