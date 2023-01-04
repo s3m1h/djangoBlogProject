@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 from .models import Post,Category
 
@@ -27,7 +28,7 @@ def category(request, slug):
     })
 def search(request):
     query = request.GET.get("query", '')
-    posts = Post.objects.filter(title_icontains=query)
+    posts = Post.objects.filter(Q(title__icontains=query) | Q(intro__icontains=query) | Q(body__icontains=query))
     return render(request, 'search.html',{
         'posts':posts,
         'query':query
