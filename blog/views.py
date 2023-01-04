@@ -27,7 +27,7 @@ def category(request, slug):
         'posts':posts
     })
 def search(request):
-    query = request.GET.get("query", '')
+    query = request.GET.get("query", "")
     posts = Post.objects.filter(Q(title__icontains=query) | Q(text__icontains=query))
     return render(request, 'search.html',{
         'posts':posts,
