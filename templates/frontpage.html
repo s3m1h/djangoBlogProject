@@ -61,7 +61,18 @@ Anasayfa
 			</ul>
 	</div>
 </div>
-	
+<div class="col-sm-4 sidebar">
+	<div class="widget">
+		<div class="widget-content">
+			<div class=" col-md-5 h-search">
+				<form class="search_form" method="get" action="{% url 'search'%}">
+					<input type="text" name="query" placeholder="Ara..">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="col-sm-4 sidebar">
 	<div class="widget">
 		<div class="widget-content">
