@@ -132,7 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'skin': 'moono',
         'toolbar':'full',
         'codeSnippet_theme': 'monokai',
         # uncomment to restrict only those languages
