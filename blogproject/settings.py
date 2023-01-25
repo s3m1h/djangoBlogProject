@@ -133,17 +133,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar':'full',
-        'codeSnippet_theme': 'monokai',
+        'codeSnippet_theme': 'atom one dark',
         # uncomment to restrict only those languages
         'codeSnippet_languages': {
-            'python': 'Python',
-            'dart':'Dart',
-            'csharp':'C#'
+        #    'python': 'Python',
+        #    'dart':'Dart',
+        #    'csharp':'C#'
         },
         'extraPlugins': ','.join(
             [
                 # add the follow plugins
-                'codesnippet',
+                #'codesnippet',
                 # 'widget',
                 # 'dialog',
             ]),
