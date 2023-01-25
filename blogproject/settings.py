@@ -137,7 +137,7 @@ CKEDITOR_CONFIGS = {
         # uncomment to restrict only those languages
         'codeSnippet_languages': {
             'python': 'Python',
-            'flutter':'Flutter'
+            'flutter':'Flutter',
             'dart':'Dart',
             'csharp':'CSharp',
         },
