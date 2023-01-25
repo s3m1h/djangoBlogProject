@@ -136,16 +136,17 @@ CKEDITOR_CONFIGS = {
         'codeSnippet_theme': 'atom one dark',
         # uncomment to restrict only those languages
         'codeSnippet_languages': {
-        #    'python': 'Python',
-        #    'dart':'Dart',
-        #    'csharp':'C#'
+            'python': 'Python',
+            'flutter':'Flutter'
+            'dart':'Dart',
+            'csharp':'CSharp',
         },
         'extraPlugins': ','.join(
             [
                 # add the follow plugins
-                #'codesnippet',
-                # 'widget',
-                # 'dialog',
+                'codesnippet',
+                'widget',
+                'dialog',
             ]),
     }
 }
