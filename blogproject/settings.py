@@ -128,3 +128,35 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_MyCustomToolbar': [
+            {'name': 'basic', 'items': [
+                'Source',
+                '-',
+                'Bold',
+                'Italic',
+                'CodeSnippet'  # add the codesnippet button name
+            ]}
+        ],
+
+        'codeSnippet_theme': 'monokai',
+        # uncomment to restrict only those languages
+        'codeSnippet_languages': {
+            'python': 'Python',
+            'dart':'Dart',
+            'csharp':'C#'
+        },
+        'toolbar': 'MyCustomToolbar',
+        'extraPlugins': ','.join(
+            [
+                # add the follow plugins
+                'codesnippet',
+                # 'widget',
+                # 'dialog',
+            ]),
+    }
+}
