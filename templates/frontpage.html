@@ -1,93 +1,88 @@
-{% extends './base/base.html'%}
-{% load static %}
-{%block title%}
-Anasayfa
-{%endblock%}
+{% extends './base/base.html'%} {% load static %} {%block title%} Anasayfa
+{%endblock%} {%block content%}
 
-{%block content%}
-<div class="col-sm-8 col-md-8">
+<div class="row">
+  <div class="leftcolumn">
+    <section id="main-content">
+      <ul>
+        {% for post in posts%}
+        <div>
+          <li>
+            <h2>
+              [
+              <a href="{% url 'post_detail' post.category.slug post.slug%}"
+                >{{post.title}}</a
+              >
+              ] [
+              <a href='{% url "category_detail" post.category.slug %}'
+                >{{post.category.title}}</a
+              >
+              ]
+            </h2>
 
-	{% for post in posts%}
-	<article class="content-item">
-		<div class="entry-media">
-			
-			<div class="post-title">
-				<h2><a href="{% url 'post_detail' post.category.slug post.slug%}">{{post.title}}</a></h2>
-				<div class="entry-date">
-					<ul>
-						<li><a href='{% url "category_detail" post.category.slug %}'>{{post.category.title}}</a></li>
-						<li>{{post.created_at|timesince}}</li>
+            <time>{{post.created_at|timesince}}</time>
+            <p>{{post.text|truncatewords:20|safe}}</p>
+          </li>
+        </div>
+        {%endfor%}
+      </ul>
+    </section>
+  </div>
+  <div class="rightcolumn">
+    <div class="col-sm-4 sidebar">
+      <div class="widget">
+        <div class="widget-content">
+          <form class="" method="get" action="{% url 'search'%}">
+            <input
+              class="form-control"
+              type="text"
+              name="query"
+              placeholder="Aramak istediğiniz ifadeyi yazıp enter e basın.."
+            />
+          </form>
+        </div>
+      </div>
+    </div>
 
-					</ul>
-				</div>
-			</div>
+    <div class="col-sm-4 sidebar">
+      <div class="widget">
+        <div class="widget-content">
+          <ul>
+            {% for category in categories%}
 
-			<div class="post-content">
-				<p>
-					{{post.text|truncatewords:20|safe}}
-				</p>
-			</div>
+            <li>
+              <a href="{% url 'category_detail' category.slug%}"
+                >{{category}}</a
+              >
+            </li>
 
-			<div class="post-footer"></div>
-		</div>
-	</article>
-	{%endfor%}
-	
-	{% for contact in posts %}
-		{# Each "contact" is a Contact model object. #}
-		{{ contact.full_name|upper }}
-	{% endfor %}
-
-	<div class="post-navigation">
-			<ul>
-				{% if posts.has_previous %}
-					<li> <a href="?page=1">&laquo;</a></li>
-					<li><a href="?page={{ posts.previous_page_number }}"><i class="fa fa-chevron-left"></i></a></li>
-				{% endif %}
-
-			<li>
-				<span class="current">
-					 {{ posts.number }} of {{ posts.paginator.num_pages }}.
-				</span>
-			</li>
-
-			{% if posts.has_next %}
-				<li>
-					<a href="?page={{ posts.next_page_number }}"><i class="fa fa-chevron-right"></i></a>
-				</li>
-				
-				<li><a href="?page={{ posts.paginator.num_pages }}"> &raquo;</a></li>
-			{% endif %}
-			</ul>
-	</div>
-</div>
-<div class="col-sm-4 sidebar">
-	<div class="widget">
-		<div class="widget-content">
-
-				<form class="" method="get" action="{% url 'search'%}">
-					<input class="form-control" type="text" name="query" placeholder="Aramak istediğiniz ifadeyi yazıp enter e basın..">
-				</form>
-		</div>
-	</div>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="col-sm-4 sidebar">
-	<div class="widget">
-		<div class="widget-content">
-			<ul>
-				{% for category in categories%}
+{% for contact in posts %}
+  {{contact.full_name|upper }}
+{% endfor %}
 
-				
-				<li>
-					<a href="{% url 'category_detail' category.slug%}">{{category}}</a>
-				</li>
+<div class="pagination">
+  {% if posts.has_previous %}
+  <a class="page-item" href="?page=1">&laquo;</a>
+  <a class="page-item" href="?page={{ posts.previous_page_number }}"
+    ><i class="fa fa-chevron-left"></i
+  ></a>
+  {% endif %}
 
-				{% endfor %}
-			</ul>
-		</div>
-	</div>
+  <span class="page-item">
+    {{ posts.number }} of {{ posts.paginator.num_pages }}.
+  </span>
+
+  {% if posts.has_next %}
+  <a class="page-item" href="?page={{ posts.paginator.num_pages }}"> &raquo;</a>
+  {% endif %}
 </div>
-
 
 {%endblock%}

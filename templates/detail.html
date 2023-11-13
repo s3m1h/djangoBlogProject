@@ -1,35 +1,26 @@
-{% extends './base/base.html'%}
-{% load static %}
-
-{%block title%}
-
-    {{post.title}}
-
-{%endblock%}
-
-
-{%block content%}
+{% extends './base/base.html'%} {% load static %} {%block title%} {{post.title}}
+{%endblock%} {%block content%}
 
 <article class="content-item">
-    <div class="entry-media">
-        <div class="post-title">
-            <h2><a href="">{{post.title}}</a></h2>
-            <div class="entry-date">
-                <ul>
-                    <li><a href='{% url "category_detail" post.category.slug %}'>{{post.category}}</a></li>
-                    <li>{{post.created_at|timesince}}</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="post-content ">
-            <p>
-                {{post.text|safe}}
-            </p>
-        </div>
-
-        <div class="post-footer"></div>
+  <div class="post-title">
+    <h2><a href="">{{post.title}}</a></h2>
+    <div class="entry-date">
+      <ul>
+        <li>
+          <a href='{% url "category_detail" post.category.slug %}'
+            >{{post.category}}</a
+          >
+        </li>
+        <li>{{post.created_at|timesince}}</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="post-content">
+    <p>{{post.text|safe}}</p>
+  </div>
+
+  <div class="post-footer"></div>
 </article>
 
 {%endblock%}
