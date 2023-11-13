@@ -5,14 +5,9 @@
   <div class="post-title">
     <h2><a href="">{{post.title}}</a></h2>
     <div class="entry-date">
-      <ul>
-        <li>
-          <a href='{% url "category_detail" post.category.slug %}'
-            >{{post.category}}</a
-          >
-        </li>
-        <li>{{post.created_at|timesince}}</li>
-      </ul>
+          [ <a href='{% url "category_detail" post.category.slug %}'>{{post.category}}</a> ]
+         <time>{{post.created_at|timesince}}</time> 
+
     </div>
   </div>
 
