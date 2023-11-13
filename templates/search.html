@@ -1,23 +1,21 @@
-{% extends './base/base.html'%} {% load static %} {%block title%} Search
-{%endblock%} {%block content%} {% for post in posts%}
-<article class="content-item">
-  <div class="entry-media">
-    <div class="post-title">
-      <h2>
-        <a href="{% url 'post_detail' post.category.slug post.slug %}"
-          >{{post.title}}</a
-        >
-      </h2>
-      <div class="entry-date">
-        <ul>
-          <li><a href="#">{{post.category.title}}</a></li>
-          <li>{{post.created_at|timesince}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="post-footer"></div>
-  </div>
-</article>
+{% extends './base/base.html'%} 
+{% load static %} 
+{%block title%} 
+  Search
+{%endblock%}
+
+{%block content%} 
+
+{% for post in posts%}
+  <article >
+    <h2>
+      <a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a>
+    </h2>
+    [ <a href="#">{{post.category.title}}</a> ]
+    <time>{{post.created_at|timesince}}</time> 
+  </article>
 {% empty %}
-<p>Herhangi bir sonuç bulunamadı...</p>
-{%endfor%} {%endblock%}
+<p>Herhangi bir sonuç bulunamadi...</p>
+{%endfor%} 
+
+{%endblock%}

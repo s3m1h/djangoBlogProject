@@ -1,55 +1,45 @@
 {% extends './base/base.html'%}
 {% load static %}
 
-{%block title%}{{category.title}}{%endblock%}
+{%block title%}
+	{{category.title}}
+{%endblock%}
 
 {%block content%}
 
-
-	{% for post in posts%}
-	<article class="content-item">
-		<div class="entry-media">
-			<div class="post-title">
-				<h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
-				<div class="entry-date">
-					<ul>
-						<li><a href='#'>{{post.category.title}}</a></li>
-						<li>{{post.created_at|timesince}}</li>
-					</ul>
-				</div>
-			</div>
-			<div class="post-footer"></div>
-		</div>
-	</article>
-	{%endfor%}
+	{% if posts|length > 0 %}
+		{% for post in posts%}
+		<article>
+			<h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
+			[ <a href='#'>{{post.category.title}}</a> ]
+			<time>{{post.created_at|timesince}}</time>	
+		</article>
+		{%endfor%}
+	{% else %}
+		<p>Herhangi bir içerik bulunamadi...</p>
+	{% endif %}
+	
 
 	{% for contact in posts %}
-		{# Each "contact" is a Contact model object. #}
-		{{ contact.full_name|upper }}
-	{% endfor %}
+  {{contact.full_name|upper }}
+{% endfor %}
 
-	<div class="post-navigation">
-			<ul>
-				{% if posts.has_previous %}
-					<li> <a href="?page=1">&laquo;</a></li>
-					<li><a href="?page={{ posts.previous_page_number }}"><i class="fa fa-chevron-left"></i></a></li>
-				{% endif %}
+<div class="pagination">
+  <span class="step-links">
+  {% if posts.has_previous %}
+  <a class="page-item" href="?page=1">&laquo;</a>
+  <a class="page-item" href="?page={{ posts.previous_page_number }}">previous</a>
+  {% endif %}
 
-			<li>
-				<span class="current">
-					 {{ posts.number }} of {{ posts.paginator.num_pages }}.
-				</span>
-			</li>
+  <span class="page-item">
+    {{ posts.number }} of {{ posts.paginator.num_pages }}.
+  </span>
 
-			{% if posts.has_next %}
-				<li>
-					<a href="?page={{ posts.next_page_number }}"><i class="fa fa-chevron-right"></i></a>
-				</li>
-				
-				<li><a href="?page={{ posts.paginator.num_pages }}"> &raquo;</a></li>
-			{% endif %}
-			</ul>
-	</div>
+  {% if posts.has_next %}
+  <a href="?page={{ posts.next_page_number }}">next</a>
+  <a class="page-item" href="?page={{ posts.paginator.num_pages }}"> &raquo; </a>
+  {% endif %}
+</span>
 </div>
 	
 
