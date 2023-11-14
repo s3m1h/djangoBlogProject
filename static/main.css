@@ -126,7 +126,7 @@ header {
   }
   ul {
     list-style: none;
-  }
+}
   ul li {
     position: relative;
 
@@ -155,6 +155,7 @@ pre {
     text-wrap: normal;
     overflow: auto;
     overflow-y: hidden;
+
   }
   .language-python{
     background: rgba(0,0,0,0.9);
@@ -180,7 +181,7 @@ pre {
     color: #ED7D31;
     border-radius: 2px;
   }
-  code{
+  code.highlighter-rouge{
     background: rgba(0,0,0,0.9);
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 0px 3px;
@@ -192,7 +193,6 @@ pre {
   table {
     width: 100%;
     margin: 0 0 20px 0;
-    border: 0.5px solid rgba(255, 255, 255, 0.15);
   }
   
   th {

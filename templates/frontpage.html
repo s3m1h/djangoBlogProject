@@ -20,7 +20,7 @@
             <time>{{post.created_at|timesince}}</time>
             {% if post.text != None%}
 
-            <p>{{post.text|truncatewords:20|safe}}</p>
+            <p>{{post.text|truncatewords_html:5|safe}}</p>
 
             {% else %}
             <p></p>

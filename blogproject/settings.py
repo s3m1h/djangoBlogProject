@@ -27,7 +27,8 @@ DEBUG = False
 #profejsb.pythonanywhere.com
 ALLOWED_HOSTS = ["profejsb.pythonanywhere.com"]
 
-
+# cross origin opener policy
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,18 +133,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar':'full',
+        "removePlugins": "stylesheetparser",
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['CodeSnippet','Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+            ['Maximize'],
+        ],
+        'extraPlugins': 'justify,liststyle,indent,codesnippet',
         "skin": "moono-lisa",
         'codeSnippet_theme': 'xcode',
-        # uncomment to restrict only those languages
-        'width': '100%',
-        'height': 300,
-        'extraPlugins': ','.join(
-            [
-                # add the follow plugins
-                'codesnippet',
-                'widget',
-                'dialog',
-            ]),
     }
 }
