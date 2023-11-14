@@ -11,7 +11,7 @@
     <section id="main-content">
       <ul>
         {% for post in posts%}
-        <div>
+        
           <li>
             <h2>
               [ <a href="{% url 'post_detail' post.category.slug post.slug%}">{{post.title}}</a> ] 
@@ -19,14 +19,14 @@
 
             <time>{{post.created_at|timesince}}</time>
             {% if post.text != None%}
-            <div>
-              <p>{{post.text|truncatewords:20|safe}}</p>
-            </div>
+
+            <p>{{post.text|truncatewords:20|safe}}</p>
+
             {% else %}
             <p></p>
             {%endif%}
           </li>
-        </div>
+        
         {%endfor%}
       </ul>
     </section>
