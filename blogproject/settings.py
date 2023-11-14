@@ -136,13 +136,14 @@ CKEDITOR_CONFIGS = {
         "skin": "moono-lisa",
         'codeSnippet_theme': 'xcode',
         # uncomment to restrict only those languages
-
+        'width': '100%',
+        'height': 300,
         'extraPlugins': ','.join(
             [
                 # add the follow plugins
                 'codesnippet',
-                #'widget',
-                #'dialog',
+                'widget',
+                'dialog',
             ]),
     }
 }

@@ -12,7 +12,12 @@
   </div>
 
   <div class="post-content">
+    {% if post.text != None%}
     <p>{{post.text|safe}}</p>
+    {% else %}
+    <p>Herhangi bir içerik eklenmemiş..</p>
+    {%endif%}
+
   </div>
 
   <div class="post-footer"></div>

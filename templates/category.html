@@ -10,9 +10,10 @@
 	{% if posts|length > 0 %}
 		{% for post in posts%}
 		<article>
+      <br>
 			<h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
 			[ <a href='#'>{{post.category.title}}</a> ]
-			<time>{{post.created_at|timesince}}</time>	
+			<time>{{post.created_at|timesince}}</time>
 		</article>
 		{%endfor%}
 	{% else %}
