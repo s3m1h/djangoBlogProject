@@ -11,7 +11,7 @@
     <section id="main-content">
       <ul>
         {% for post in posts%}
-        <ul>
+        <div>
           <li>
             <h2>
               [ <a href="{% url 'post_detail' post.category.slug post.slug%}">{{post.title}}</a> ] 
@@ -26,7 +26,7 @@
             <p></p>
             {%endif%}
           </li>
-        </ul>
+        </div>
         {%endfor%}
       </ul>
     </section>
