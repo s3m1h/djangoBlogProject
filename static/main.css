@@ -189,7 +189,13 @@ pre {
     color: #aa759f;
     border-radius: 2px;
   }
-  
+  .badge{
+    background: rgba(0, 0, 0, 0.9);
+    color:  #aa759f;
+    padding: 3px 5px;
+    text-align: center;
+    border-radius: 0px;
+  }
   table {
     width: 100%;
     margin: 0 0 20px 0;

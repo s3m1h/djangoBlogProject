@@ -5,9 +5,8 @@
   <div class="post-title">
     <h2><a href="">{{post.title}}</a></h2>
     <div class="entry-date">
-          [ <a href='{% url "category_detail" post.category.slug %}'>{{post.category}}</a> ]
-         <time>{{post.created_at|timesince}}</time> 
-
+      <time>{{post.created_at|timesince}}</time> 
+      <a class="badge" href='{% url "category_detail" post.category.slug %}'>{{post.category}}</a>
     </div>
   </div>
 
@@ -20,7 +19,7 @@
 
   </div>
 
-  <div class="post-footer"></div>
+  <a href="{{request.META.HTTP_REFERER}}">&laquo; Go back</a>
 </article>
 
 {%endblock%}

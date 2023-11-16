@@ -16,14 +16,17 @@
             <h2>
               [ <a href="{% url 'post_detail' post.category.slug post.slug%}">{{post.title}}</a> ] 
             </h2>
-
-            <time>{{post.created_at|timesince}}</time>
+            <div>
+              <time>{{post.created_at|timesince}}</time>
+              <span class="badge">{{post.category}}</span>
+            </div>
+            
             {% if post.text != None%}
 
-            <p>{{post.text|truncatewords_html:5|safe}}</p>
+            <p>{{post.text|truncatewords_html:10|safe}}</p>
 
             {% else %}
-            <p></p>
+            <p>saefesaf</p>
             {%endif%}
           </li>
         
