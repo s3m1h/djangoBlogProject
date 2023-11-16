@@ -6,19 +6,25 @@
 {%endblock%}
 
 {%block content%}
+<div class="content-item">
+  {% if posts|length > 0 %}
+  {% for post in posts%}
+  <article>
+    <br>
+    <h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
+    <time>{{post.created_at|timesince}}</time>
+    <span class="badge">{{post.category.title}}</span>
+    
+  </article>
+  {%endfor%}
+{% else %}
+  <p>Herhangi bir içerik bulunamadi...</p>
+{% endif %}
 
-	{% if posts|length > 0 %}
-		{% for post in posts%}
-		<article>
-      <br>
-			<h2><a href="{% url 'post_detail' post.category.slug post.slug %}">{{post.title}}</a></h2>
-			[ <a href='#'>{{post.category.title}}</a> ]
-			<time>{{post.created_at|timesince}}</time>
-		</article>
-		{%endfor%}
-	{% else %}
-		<p>Herhangi bir içerik bulunamadi...</p>
-	{% endif %}
+<br>
+<br>
+<a href="{{request.META.HTTP_REFERER}}">&laquo; Go back</a>
+</div>
 	
 
 	{% for contact in posts %}
